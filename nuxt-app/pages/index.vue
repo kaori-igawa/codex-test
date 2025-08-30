@@ -21,12 +21,6 @@
 import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
 
-interface Todo {
-  id: number
-  text: string
-  done: boolean
-}
-
 const store = useStore()
 const todos = computed(() => store.state.todos)
 const newTodo = ref("")
