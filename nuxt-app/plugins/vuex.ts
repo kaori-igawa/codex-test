@@ -11,10 +11,10 @@ const store = createStore({
     todos: [] as Todo[],
   }),
   mutations: {
-    addTodo(state, todo: Todo) {
+    addTodo(state: { todos: Todo[] }, todo: Todo) {
       state.todos.push(todo)
     },
-    removeTodo(state, id: number) {
+    removeTodo(state: { todos: Todo[] }, id: number) {
       state.todos = state.todos.filter((t) => t.id !== id)
     },
   },
