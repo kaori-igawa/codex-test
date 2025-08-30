@@ -19,20 +19,20 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { useStore } from 'vuex'
+import { useTodosStore } from '~/stores/todos'
 
-const store = useStore()
-const todos = computed(() => store.state.todos)
+const store = useTodosStore()
+const todos = computed(() => store.todos)
 const newTodo = ref("")
 
 function addTodo() {
   if (!newTodo.value.trim()) return
-  store.commit('addTodo', { id: Date.now(), text: newTodo.value, done: false })
+  store.addTodo({ id: Date.now(), text: newTodo.value, done: false })
   newTodo.value = ""
 }
 
 function removeTodo(id: number) {
-  store.commit('removeTodo', id)
+  store.removeTodo(id)
 }
 </script>
 
