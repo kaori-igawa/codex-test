@@ -18,23 +18,27 @@
 </template>
 
 <script setup lang="ts">
+import { ref, computed } from 'vue'
+import { useStore } from 'vuex'
+
 interface Todo {
   id: number
   text: string
   done: boolean
 }
 
-const todos = useState<Todo[]>("todos", () => [])
+const store = useStore()
+const todos = computed(() => store.state.todos)
 const newTodo = ref("")
 
 function addTodo() {
   if (!newTodo.value.trim()) return
-  todos.value.push({ id: Date.now(), text: newTodo.value, done: false })
+  store.commit('addTodo', { id: Date.now(), text: newTodo.value, done: false })
   newTodo.value = ""
 }
 
 function removeTodo(id: number) {
-  todos.value = todos.value.filter((t) => t.id !== id)
+  store.commit('removeTodo', id)
 }
 </script>
 
