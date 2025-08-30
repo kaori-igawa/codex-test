@@ -5,4 +5,5 @@ export default defineNuxtConfig({
   modules: [
     '@pinia/nuxt',
   ],
+  pinia: { storesDirs: ['app/stores/**'] },
 })
