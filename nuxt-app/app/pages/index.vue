@@ -19,7 +19,6 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { useTodosStore } from '~/stores/todos'
 
 const store = useTodosStore()
 const todos = computed(() => store.todos)
